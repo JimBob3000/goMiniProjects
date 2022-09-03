@@ -6,20 +6,27 @@ import (
 )
 
 func main() {
-	targetNumber := 77
+	targetNumber := 111
 	numbers := []int{}
 	for i := 0; i < 100; i++ {
 		numbers = append(numbers, i)
 	}
 
-	binarySearch(numbers, targetNumber)
+	found, guessCount := binarySearch(numbers, targetNumber)
+
+	if found {
+		fmt.Printf("Target number %v found in %v guessses.\n", targetNumber, guessCount)
+	} else {
+		fmt.Printf("Target number %v not in slice, searched %v times.\n", targetNumber, guessCount)
+	}
 }
 
-func binarySearch(numbers []int, targetNumber int) {
+func binarySearch(numbers []int, targetNumber int) (bool, int) {
 	min := 0
 	max := len(numbers)
-	guessCount := 0
 	guess := math.Floor(float64((min + max) / 2))
+	previousGuess := guess
+	guessCount := 1
 
 	for int(guess) != targetNumber {
 		fmt.Printf("Guessing %v...\n", int(guess))
@@ -30,9 +37,15 @@ func binarySearch(numbers []int, targetNumber int) {
 			max = int(guess)
 		}
 
+		previousGuess = guess
 		guess = math.Floor(float64((min + max) / 2))
+
+		if guess == previousGuess {
+			return false, guessCount
+		}
+
 		guessCount++
 	}
 
-	fmt.Printf("Target number %v found in %v guesses\n", guess, guessCount)
+	return true, guessCount
 }
