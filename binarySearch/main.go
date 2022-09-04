@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	targetNumber := 111
+	targetNumber := 45
 	numbers := []int{}
 	for i := 0; i < 100; i++ {
 		numbers = append(numbers, i)
@@ -29,8 +29,6 @@ func binarySearch(numbers []int, targetNumber int) (bool, int) {
 	guessCount := 1
 
 	for int(guess) != targetNumber {
-		fmt.Printf("Guessing %v...\n", int(guess))
-
 		if targetNumber > int(guess) {
 			min = int(guess)
 		} else {

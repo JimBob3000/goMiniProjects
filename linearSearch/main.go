@@ -9,7 +9,7 @@ func main() {
 	found, guessCount := linearSearch(numbers, targetNumber)
 
 	if found {
-		fmt.Printf("Target number %v found in %v guessses.\n", targetNumber, guessCount)
+		fmt.Printf("Target number %v found in %v guesses.\n", targetNumber, guessCount)
 	} else {
 		fmt.Printf("Target number %v not in slice.\n", targetNumber)
 	}

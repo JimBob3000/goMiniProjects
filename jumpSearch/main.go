@@ -4,7 +4,7 @@ import "fmt"
 
 func main() {
 	numbers := []int{1, 1, 1, 2, 5, 7, 8, 11, 11, 15, 19, 27, 29, 30, 31, 32, 33, 38, 40, 45, 46, 50}
-	targetNumber := 33
+	targetNumber := 50
 
 	found, guessCount := jumpSearch(numbers, targetNumber)
 
@@ -18,11 +18,11 @@ func main() {
 func jumpSearch(numbers []int, targetNumber int) (bool, int) {
 	guessCount := 1
 	currentIndex := 0
-	numberLength := len(numbers)
+	numbersLength := len(numbers)
 	jump := 4
 
 	for {
-		if currentIndex > numberLength {
+		if currentIndex > numbersLength {
 			currentIndex = currentIndex - jump
 			break
 		}
@@ -36,7 +36,7 @@ func jumpSearch(numbers []int, targetNumber int) (bool, int) {
 		guessCount++
 	}
 
-	for currentIndex < numberLength {
+	for currentIndex < numbersLength {
 		if numbers[currentIndex] == targetNumber {
 			return true, guessCount
 		}
