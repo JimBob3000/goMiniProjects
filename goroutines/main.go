@@ -15,7 +15,7 @@ func main() {
 	// We need to use wait groups to keep concurrency, not sleeps!
 	time.Sleep(100 * time.Millisecond)
 
-	fmt.Println("App finished - goroutine may not have finished!")
+	fmt.Println("App finished")
 }
 
 func welcome(name string) {
